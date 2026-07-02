@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="no">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Greenline Test</title>
+
+<style>
+
+body{
+
+    font-family:Arial;
+
+    text-align:center;
+
+    background:#4FC3F7;
+
+}
+
+#boat{
+
+    font-size:120px;
+
+    cursor:pointer;
+
+}
+
+h1{
+
+    color:white;
+
+}
+
+#score,#time{
+
+    font-size:30px;
+
+    color:white;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🚤 Greenline Test</h1>
+
+<p id="time">Tid: 10</p>
+
+<p id="score">Poeng: 0</p>
+
+<div id="boat">🚤</div>
+
+<script>
+
+let score=0;
+
+let time=10;
+
+boat.onclick=function(){
+
+    if(time>0){
+
+        score++;
+
+        scoreText.innerHTML="Poeng: "+score;
+
+    }
+
+}
+
+let scoreText=document.getElementById("score");
+
+let timer=setInterval(function(){
+
+    time--;
+
+    document.getElementById("time").innerHTML="Tid: "+time;
+
+    if(time==0){
+
+        clearInterval(timer);
+
+        alert("Ferdig! Du fikk "+score+" poeng.");
+
+    }
+
+},1000);
+
+</script>
+
+</body
