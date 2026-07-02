@@ -6,39 +6,63 @@
 
 <meta charset="UTF-8">
 
-<title>Greenline Test</title>
+<title>Wheelie Challenge</title>
 
 <style>
 
 body{
 
-    font-family:Arial;
+margin:0;
 
-    text-align:center;
+overflow:hidden;
 
-    background:#4FC3F7;
+background:linear-gradient(skyblue,#88d066);
 
-}
+font-family:Arial;
 
-#boat{
-
-    font-size:120px;
-
-    cursor:pointer;
+text-align:center;
 
 }
 
 h1{
 
-    color:white;
+margin-top:20px;
 
 }
 
-#score,#time{
+#score{
 
-    font-size:30px;
+font-size:30px;
 
-    color:white;
+font-weight:bold;
+
+}
+
+#bike{
+
+position:absolute;
+
+left:50%;
+
+top:60%;
+
+font-size:90px;
+
+transform:translate(-50%,-50%) rotate(0deg);
+
+transition:transform 0.05s;
+
+}
+
+#info{
+
+position:absolute;
+
+bottom:20px;
+
+width:100%;
+
+font-size:22px;
 
 }
 
@@ -48,50 +72,84 @@ h1{
 
 <body>
 
-<h1>🚤 Greenline Test</h1>
+<h1>🏍 Wheelie Challenge</h1>
 
-<p id="time">Tid: 10</p>
+<div id="score">Poeng: 0</div>
 
-<p id="score">Poeng: 0</p>
+<div id="bike">🏍️</div>
 
-<div id="boat">🚤</div>
+<div id="info">Hold fingeren på skjermen!</div>
 
 <script>
 
+let angle=0;
+
 let score=0;
 
-let time=10;
+let holding=false;
 
-boat.onclick=function(){
+const bike=document.getElementById("bike");
 
-    if(time>0){
+const scoreBox=document.getElementById("score");
 
-        score++;
+function update(){
 
-        scoreText.innerHTML="Poeng: "+score;
+if(holding){
 
-    }
+angle+=2;
+
+}else{
+
+angle-=1;
 
 }
 
-let scoreText=document.getElementById("score");
+if(angle<0) angle=0;
 
-let timer=setInterval(function(){
+bike.style.transform=
 
-    time--;
+`translate(-50%,-50%) rotate(${-angle}deg)`;
 
-    document.getElementById("time").innerHTML="Tid: "+time;
+if(angle>20 && angle<55){
 
-    if(time==0){
+score++;
 
-        clearInterval(timer);
+scoreBox.innerHTML="Poeng: "+score;
 
-        alert("Ferdig! Du fikk "+score+" poeng.");
+}
 
-    }
+if(angle>=60){
 
-},1000);
+alert("Du veltet!\nPoeng: "+score);
+
+score=0;
+
+angle=0;
+
+scoreBox.innerHTML="Poeng: 0";
+
+}
+
+requestAnimationFrame(update);
+
+}
+
+document.body.onpointerdown=()=>{
+
+holding=true;
+
+};
+
+document.body.onpointerup=()=>{
+
+holding=false;
+
+};
+
+update();
 
 </script>
 
-</body
+</body>
+
+</html
