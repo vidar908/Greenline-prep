@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="no">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Mitt første spill</title>
+
+<style>
+
+body{
+
+  margin:0;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  height:100vh;
+
+  background:#222;
+
+  color:white;
+
+  font-family:Arial,sans-serif;
+
+}
+
+#box{
+
+  width:120px;
+
+  height:120px;
+
+  background:red;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  font-size:22px;
+
+  cursor:pointer;
+
+  border-radius:12px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="box">0</div>
+
+<script>
+
+let score = 0;
+
+const box = document.getElementById("box");
+
+box.onclick = function(){
+
+  score++;
+
+  box.innerHTML = score;
+
+  box.style.background =
+
+    "#" + Math.floor(Math.random()*16777215).toString(16);
+
+};
+
+</script>
+
+</body>
+
+</html
